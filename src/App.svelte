@@ -16,7 +16,7 @@
 </header>
 
 <main>
-    <p>Using this interactive builder, you can build simple own experiments with large language models (LLMs) for use with <code>ego</code>. <a href="#TODO" target="_blank">Read our paper</a> &middot; <a href="https://github.com/mrpg/ego" target="_blank">GitHub</a></p>
+    <p>Using this interactive builder, you can build simple own experiments with large language models (LLMs) for use with <code>ego</code>. <a href="https://q.mg.sb/ego" target="_blank">Read our paper</a> &middot; <a href="https://github.com/mrpg/ego" target="_blank">GitHub</a></p>
 
     <p>This builder works for turn-based interactive experiments with one or more LLMs and one or more rounds. It allows you to define treatments and to have prompts and variables vary along those treatments. <a href="https://www.youtube.com/watch?v=H0O9rwk8vqg" target="_blank">Here’s a video tutorial.</a></p>
 
