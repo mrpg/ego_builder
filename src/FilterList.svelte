@@ -53,7 +53,7 @@
                     <th scope="row">
                         {filter_description($s.filters[thread[0]])}
                         {#if $s.filters[thread[0]].length > 1}
-                        <input type="text" class="form-control mb-1" on:change={meta_change} data-threadix={thread[0]} value={$s.filters[thread[0]][1] || ""} style="display:inline;width:50%">
+                        <input type="text" class="form-control mb-1" on:input={meta_change} data-threadix={thread[0]} value={$s.filters[thread[0]][1] || ""} style="display:inline;width:50%">
                         {/if}
                         <button type="button" class="btn btn-primary btn-sm" on:click={() => $change_filter = thread[0]} data-threadix={thread[0]} data-bs-toggle="modal" data-bs-target="#filter_modal">
                             Change

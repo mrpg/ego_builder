@@ -100,7 +100,7 @@
                         {#each $s.treatments as treatment}
                         <p>
                         <b>{treatment}</b>
-                        <input type="text" class="form-control mb-1" on:change={var_change} data-var={variable[0]} data-treat={treatment} value={variable[1][treatment] || ""}>
+                        <input type="text" class="form-control mb-1" on:input={var_change} data-var={variable[0]} data-treat={treatment} value={variable[1][treatment] || ""}>
                         </p>
                         {#if !(treatment in variable[1])}
                         <p class="alert alert-danger" role="alert">unset</p>
