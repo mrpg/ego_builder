@@ -7,8 +7,14 @@
         $s.variables = $s.variables;
     }
 
+    function is_valid_number(x) {
+        const regex = /^[+-]?\d+(\.\d+)?$/;
+
+        return regex.test(x);
+    }
+
     function try_float(x) {
-        if (isNaN(parseFloat(x))) {
+        if (!is_valid_number(x)) {
             return x;
         }
         else {
@@ -16,9 +22,35 @@
         }
     }
 
+    function have_all(varname, old_value) {
+        for (const t in $s.variables[varname]) {
+            const check = (t in $s.variables[varname]) ? $s.variables[varname][t] : null;
+
+            if (check != old_value) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
     function var_change(event) {
         let source = event.target || event.srcElement;
-        $s.variables[source.dataset.var][source.dataset.treat] = try_float(source.value);
+        let treat = source.dataset.treat;
+        let value = try_float(source.value);
+        let old_value = (treat in $s.variables[source.dataset.var]) ? $s.variables[source.dataset.var][treat] : null;
+        let set_on_all = treat == $s.treatments[0] && have_all(source.dataset.var, old_value);
+
+        if (set_on_all) {
+            for (let i = 0; i < $s.treatments.length; i++) {
+                const t = $s.treatments[i];
+
+                $s.variables[source.dataset.var][t] = value;
+            }
+        }
+        else {
+            $s.variables[source.dataset.var][treat] = value;
+        }
     }
 </script>
 

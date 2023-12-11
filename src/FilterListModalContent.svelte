@@ -4,7 +4,7 @@
     const available_filters = [
         ["JSON", "This filter assumes that the LLM's response is JSON. JSON is a text format to exchange data. It is supported by much software, including some LLMs."],
         ["extract_number", "Extract a single number (real or integral) from the response."],
-        ["exclusive_response", "Extract a single string from a list of allowed tokens. Separate allowed tokens by semicolon (;). The LLM can return a whole sentence, but it must return exactly one of the allowed tokens."],
+        ["exclusive_response", "Extract a single string from a list of allowed tokens. Separate allowed tokens by semicolon (;), without a space between them. The LLM can return a whole sentence, but it must return exactly one of the allowed tokens."],
         ["As is", "Accept the LLM's response as is."],
     ];
 
