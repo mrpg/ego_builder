@@ -1,15 +1,7 @@
 <script>
     import { s } from "./store.js";
-
-    function system_prompt_change(event) {
-        let source = event.target || event.srcElement;
-        $s.prompts.system = source.value;
-    }
-
-    function user_prompt_change(event) {
-        let source = event.target || event.srcElement;
-        $s.prompts.user = source.value;
-    }
+    import Prompt1 from "./Prompt1.svelte";
+    import Prompt2 from "./Prompt2.svelte";
 </script>
 
 <div class="card mt-2 mb-2">
@@ -34,7 +26,7 @@
             The system prompt typically sets the stage for the interaction, providing context about what the LLM will be doing or what the experiment is about.
             </p>
 
-            <textarea rows="8" class="form-control font-monospace" on:input={system_prompt_change}>{$s.prompts.system}</textarea>
+            <Prompt1 />
         </li>
         <li class="list-group-item">
             <h4>User prompt <span class="text-muted">(what the “participant” needs to do now)</span></h4>
@@ -42,7 +34,7 @@
             The user prompt per round gives specific instructions or information to the LLM for that particular stage or round of the experiment. It often includes feedback or results from previous rounds (if any) and may provide the user with the current status or options for the next action.
             </p>
 
-            <textarea rows="12" class="form-control font-monospace" on:input={user_prompt_change}>{$s.prompts.user}</textarea>
+            <Prompt2 />
         </li>
     </ul>
 </div>
