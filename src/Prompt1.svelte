@@ -18,4 +18,4 @@
     }
 </script>
 
-<CodeMirror bind:value on:change={system_prompt_change} lang={jinja2_syntax} />
+<CodeMirror bind:value on:change={system_prompt_change} lang={jinja2_syntax} lineWrapping=1 />

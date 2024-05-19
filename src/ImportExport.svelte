@@ -1,15 +1,19 @@
 <script>
+    import CodeMirror from "svelte-codemirror-editor";
+    import { StreamLanguage } from "@codemirror/language";
+    import { json } from "@codemirror/lang-json";
+
     import { s } from "./store.js";
     import { to_json, from_json } from "./scheme.js";
 
-    let textarea_content;
+    let value = to_json();
 
-    const unsubscribe = s.subscribe(value => {
-        textarea_content = to_json();
+    const unsubscribe = s.subscribe(_ => {
+        value = to_json();
     });
 
     function handle_textarea_change() {
-        from_json(textarea_content);
+        from_json(value);
     }
 </script>
 
@@ -23,7 +27,17 @@
             To import a previously created scenario, paste it into the field:
         </p>
 
-        <textarea rows="10" class="form-control font-monospace mb-2" style="font-size: 0.65em" bind:value={textarea_content} on:input={handle_textarea_change}></textarea>
+        <CodeMirror
+        bind:value
+        lang={json()}
+        on:change={handle_textarea_change}
+        lineWrapping=1
+        styles={{
+            "&": {
+                "font-size": "0.65em",
+            },
+        }}
+        />
 
         <p class="text-muted">
             After running your scenario, you can export its data to the file <code>data.csv</code> by running <code>ego data built <i>[experiment ID]</i> &gt; data.csv</code>. The <code><i>[experiment ID]</i></code> is shown after <code>ego run built</code> ran completely.
