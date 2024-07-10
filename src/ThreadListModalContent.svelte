@@ -3,8 +3,10 @@
 
     const available_threads = [
             ["CLIThread", "A Thread that reads your input on the command line. Useful for testing."],
-            ["GPTThread (GPT 3.5)", "OpenAI's gpt-3.5-turbo model."],
-            ["GPTThread (GPT 4)", "OpenAI's gpt-4 model."]
+            ["GPTThread (GPT-3.5)", "OpenAI's gpt-3.5-turbo model. Temperature = 1.0."],
+            ["GPTThread (GPT-4)", "OpenAI's gpt-4 model. Temperature = 1.0."],
+            ["GPTThread (GPT-4 turbo)", "OpenAI's gpt-4-turbo model. Temperature = 1.0."],
+            ["GPTThread (GPT-4o)", "OpenAI's gpt-4o model. Temperature = 1.0."],
     ];
 
     function add_thread(thread) {
