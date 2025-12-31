@@ -12,7 +12,7 @@ The builder was created using [Svelte](https://svelte.dev) and [Bootstrap](https
 
 # Citation
 
-When using any part of `alter_ego` in a scientific context, cite the following work:
+When using any part of `alter_ego` in a scientific context, please cite the following work:
 
 ```tex
 @article{ego,
@@ -24,6 +24,6 @@ When using any part of `alter_ego` in a scientific context, cite the following w
 
 # License
 
-`ego_builder` is © Max R. P. Grossmann *et al.*, 2023. It is licensed under LGPLv3+. Please see *LICENSE* for details.
+`ego_builder` is © Max R. P. Grossmann *et al.*, 2025. It is licensed under 0BSD. Please see *LICENSE* for details.
 
-This program is distributed in the hope that it will be useful, but **without any warranty**; without even the implied warranty of **merchantability** or **fitness for a particular purpose**. See the GNU Lesser General Public License for more details.
+This program is distributed in the hope that it will be useful, but **without any warranty**.
