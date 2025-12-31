@@ -1,23 +1,25 @@
-import { writable } from "svelte/store";
+import { writable } from 'svelte/store';
 
 export const s = writable({
-    threads: [[1, "CLIThread"], [2, "CLIThread"]],
-    treatments: ["give", "take", "split"],
-    rounds: 1,
-    variables: {proposer_instruction: {
-        give: "Today, you can give money to the responder.",
-        take: "Today, you can take money from the responder.",
-        split: "Today, you can split money with the responder.",
-    }},
-    prompts: {
-    system: `You are participating in a decision-making experiment that includes two people: A proposer and a responder.
+	threads: [[1, "CLIThread"], [2, "CLIThread"]],
+	treatments: ["give", "take", "split"],
+	rounds: 1,
+	variables: {
+		proposer_instruction: {
+			give: "Today, you can give money to the responder.",
+			take: "Today, you can take money from the responder.",
+			split: "Today, you can split money with the responder.",
+		}
+	},
+	prompts: {
+		system: `You are participating in a decision-making experiment that includes two people: A proposer and a responder.
 {% if i == 1 %}
 You are the proposer. This means that you will move first.
 {% else %}
 You are the responder. This means that you will move second.
 {% endif %}
 Always follow the instructions. Do not apologize. Do not return anything except that which is expected.`,
-    user: `This is round {{round}}.
+		user: `This is round {{round}}.
 
 {% if i == 1 %}
 You are endowed with $10.
@@ -38,8 +40,8 @@ The proposer decided to split the endowment so that they get \${{ other.choices[
 If you ACCEPT this offer, the offer is effectuated. If you REJECT the offer, you and they get $0 each.
 Respond with either "ACCEPT" or "REJECT".
 {% endif %}`,
-    },
-    filters: [["JSON"], ["exclusive_response", "ACCEPT;REJECT"]],
+	},
+	filters: [["JSON"], ["exclusive_response", "ACCEPT;REJECT"]],
 });
 
-export var change_filter = writable(null);
+export const changeFilter = writable(null);

@@ -1,5 +1,5 @@
-/node_modules/
-/public/build/
-
+.claude
+/dist/
 .DS_Store
+/node_modules/
 upload.sh

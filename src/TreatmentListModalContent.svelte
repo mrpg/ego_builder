@@ -1,23 +1,26 @@
 <script>
-    import { s } from "./store.js";
-    import { valid_name } from "./scheme.js";
+	import { s } from './store.js';
+	import { validName } from './scheme.js';
 
-    let input_value = "";
+	let inputValue = $state('');
 
-    function add_treatment(treatment) {
-        $s.treatments = [...$s.treatments, treatment];
-    }
+	function addTreatment(treatment) {
+		s.update(state => ({
+			...state,
+			treatments: [...state.treatments, treatment]
+		}));
+	}
 
-    function handle_add() {
-        if (valid_name(input_value)) {
-            add_treatment(input_value);
-            alert(`Treatment ${input_value} was added.`);
-        } else {
-            alert("The identifier you entered is invalid. Valid names are, for example: my_treatment, abc, treat1.");
-        }
-    }
+	function handleAdd() {
+		if (validName(inputValue)) {
+			addTreatment(inputValue);
+			alert(`Treatment ${inputValue} was added.`);
+		} else {
+			alert("The identifier you entered is invalid. Valid names are, for example: my_treatment, abc, treat1.");
+		}
+	}
 </script>
 
-<input type="text" class="form-control mb-1" bind:value={input_value} placeholder="Enter identifier">
+<input type="text" class="form-control mb-1" bind:value={inputValue} placeholder="Enter identifier">
 
-<button type="button" class="btn btn-primary" on:click={handle_add}>Add</button>
+<button type="button" class="btn btn-primary" onclick={handleAdd}>Add</button>
