@@ -19,7 +19,7 @@
     "@codemirror/legacy-modes": "^6.4.2",
     "@codemirror/state": "^6.5.0",
     "@codemirror/view": "^6.35.3",
-    "bootstrap": "^5.3.3",
+    "bootstrap": "^5.3.8",
     "codemirror": "^6.0.1",
     "svelte-codemirror-editor": "^2.1.0"
   }
