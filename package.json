@@ -14,7 +14,7 @@
     "vite": "^6.0.7"
   },
   "dependencies": {
-    "@codemirror/lang-json": "^6.0.1",
+    "@codemirror/lang-json": "^6.0.2",
     "@codemirror/language": "^6.10.8",
     "@codemirror/legacy-modes": "^6.4.2",
     "@codemirror/state": "^6.5.0",
