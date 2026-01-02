@@ -8,6 +8,16 @@
 			threads: state.threads.filter(thread => thread[0] !== i)
 		}));
 	}
+
+	// Format thread definition for display
+	function formatThread(threadDef) {
+		if (Array.isArray(threadDef)) {
+			// New format: ["GPTThread", "model-id"]
+			return `${threadDef[0]} (${threadDef[1]})`;
+		}
+		// Legacy string format
+		return threadDef;
+	}
 </script>
 
 <div class="modal fade" id="thread_modal" tabindex="-1" aria-labelledby="thread_modal_label" aria-hidden="true">
@@ -52,7 +62,7 @@
 				{#each $s.threads as thread}
 				<tr>
 					<th scope="row">{thread[0]}</th>
-					<td>{thread[1]} <button class="btn btn-danger btn-sm" onclick={() => deleteThread(thread[0])}>Delete</button></td>
+					<td>{formatThread(thread[1])} <button class="btn btn-danger btn-sm" onclick={() => deleteThread(thread[0])}>Delete</button></td>
 				</tr>
 				{/each}
 			</tbody>
