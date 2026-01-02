@@ -1,8 +1,8 @@
 <script>
 	import { s } from './store.js';
 
-	// Common model suggestions for quick selection
-	const suggestedModels = [
+	// Common OpenAI model suggestions
+	const openaiModels = [
 		"gpt-4o",
 		"gpt-4o-mini",
 		"gpt-4-turbo",
@@ -14,7 +14,20 @@
 		"o3-mini",
 	];
 
-	let customModel = $state("");
+	// Common OpenRouter model suggestions
+	const openrouterModels = [
+		"anthropic/claude-3.5-sonnet",
+		"anthropic/claude-3-opus",
+		"google/gemini-pro-1.5",
+		"google/gemini-flash-1.5",
+		"meta-llama/llama-3.1-405b-instruct",
+		"meta-llama/llama-3.1-70b-instruct",
+		"mistralai/mistral-large",
+		"deepseek/deepseek-chat",
+	];
+
+	let customOpenAIModel = $state("");
+	let customOpenRouterModel = $state("");
 
 	function addThread(threadDef) {
 		s.update(state => {
@@ -34,10 +47,21 @@
 		addThread(["GPTThread", model]);
 	}
 
+	function addOpenRouterThread(model) {
+		addThread(["OpenRouterThread", model]);
+	}
+
 	function addCustomGPTThread() {
-		if (customModel.trim()) {
-			addGPTThread(customModel.trim());
-			customModel = "";
+		if (customOpenAIModel.trim()) {
+			addGPTThread(customOpenAIModel.trim());
+			customOpenAIModel = "";
+		}
+	}
+
+	function addCustomOpenRouterThread() {
+		if (customOpenRouterModel.trim()) {
+			addOpenRouterThread(customOpenRouterModel.trim());
+			customOpenRouterModel = "";
 		}
 	}
 </script>
@@ -52,14 +76,14 @@
 	</div>
 </div>
 
-<div class="card mb-2">
+<div class="card mb-3">
 	<div class="card-body">
 		<h5 class="card-title">GPTThread</h5>
-		<p class="text-muted small">OpenAI models. Temperature = 1.0. Select a model or enter a custom model ID.</p>
+		<p class="text-muted small">OpenAI models. Temperature = 1.0. Requires OPENAI_KEY env var.</p>
 
 		<div class="mb-3">
 			<div class="d-flex flex-wrap gap-1">
-				{#each suggestedModels as model}
+				{#each openaiModels as model}
 					<button class="btn btn-outline-secondary btn-sm" onclick={() => addGPTThread(model)}>{model}</button>
 				{/each}
 			</div>
@@ -70,10 +94,36 @@
 				type="text"
 				class="form-control"
 				placeholder="Custom model ID (e.g. gpt-4o-2024-08-06)"
-				bind:value={customModel}
+				bind:value={customOpenAIModel}
 				onkeydown={(e) => e.key === 'Enter' && addCustomGPTThread()}
 			/>
 			<button class="btn btn-primary" onclick={addCustomGPTThread}>Add</button>
+		</div>
+	</div>
+</div>
+
+<div class="card mb-2">
+	<div class="card-body">
+		<h5 class="card-title">OpenRouterThread</h5>
+		<p class="text-muted small">Access many LLMs via OpenRouter. Temperature = 1.0. Requires OPENROUTER_KEY env var.</p>
+
+		<div class="mb-3">
+			<div class="d-flex flex-wrap gap-1">
+				{#each openrouterModels as model}
+					<button class="btn btn-outline-secondary btn-sm" onclick={() => addOpenRouterThread(model)}>{model}</button>
+				{/each}
+			</div>
+		</div>
+
+		<div class="input-group">
+			<input
+				type="text"
+				class="form-control"
+				placeholder="Custom model ID (e.g. anthropic/claude-3.5-haiku)"
+				bind:value={customOpenRouterModel}
+				onkeydown={(e) => e.key === 'Enter' && addCustomOpenRouterThread()}
+			/>
+			<button class="btn btn-primary" onclick={addCustomOpenRouterThread}>Add</button>
 		</div>
 	</div>
 </div>
