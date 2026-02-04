@@ -10,7 +10,7 @@
   },
   "devDependencies": {
     "@sveltejs/vite-plugin-svelte": "^6.2.4",
-    "svelte": "^5.48.5",
+    "svelte": "^5.49.1",
     "vite": "^7.3.1"
   },
   "dependencies": {
@@ -18,7 +18,7 @@
     "@codemirror/language": "^6.10.8",
     "@codemirror/legacy-modes": "^6.4.2",
     "@codemirror/state": "^6.5.4",
-    "@codemirror/view": "^6.39.11",
+    "@codemirror/view": "^6.39.12",
     "bootstrap": "^5.3.8",
     "codemirror": "^6.0.2",
     "svelte-codemirror-editor": "^2.1.0"
